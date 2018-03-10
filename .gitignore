@@ -12,3 +12,6 @@ src/
 docs/_build/
 .eggs/
 .python-version
+*~
+oidc_provider/RELEASE
+.settings

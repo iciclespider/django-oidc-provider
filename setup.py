@@ -4,13 +4,14 @@ from setuptools import (
     setup,
 )
 
-
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+from oidc_provider import __version__ as version
+
 
 setup(
     name='django-oidc-provider',
-    version='0.5.2',
+    version=version,
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
@@ -37,11 +38,11 @@ setup(
     ],
     test_suite='runtests.runtests',
     tests_require=[
-        'pyjwkest>=1.3.0',
         'mock>=2.0.0',
     ],
 
     install_requires=[
+        'django',
         'pyjwkest>=1.3.0',
     ],
 )
