@@ -87,7 +87,13 @@ def client_id_from_id_token(id_token):
     Extracts the client id from a JSON Web Token (JWT).
     Returns a string or None.
     """
-    return jwt.decode(id_token, verify=False).get('aud', None)
+    payload = jwt.decode(id_token, verify=False)
+    aud = payload.get('aud', None)
+    if aud is None:
+        return None
+    if isinstance(aud, list):
+        return aud[0]
+    return aud
 
 
 def create_token(user, client, scope, id_token_dic=None):

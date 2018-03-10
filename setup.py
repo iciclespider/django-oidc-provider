@@ -8,6 +8,19 @@ from setuptools import (
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 from oidc_provider import __version__ as version
 
+install_requires=(
+    'django',
+    'cryptography>==2.0',
+    'pyjwt>==1.5.0',
+)
+tests_require=(
+    'pyjwkest>=1.3.0',
+    'mock>=2.0.0',
+)
+if bool(os.getenv('PYTHON_DEV', False)):
+    install_requires += tests_require
+    tests_require = None
+
 
 setup(
     name='django-oidc-provider',
@@ -20,7 +33,7 @@ setup(
     url='http://github.com/juanifioren/django-oidc-provider',
     author='Juan Ignacio Fiorentino',
     author_email='juanifioren@gmail.com',
-    classifiers=[
+    classifiers=(
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
@@ -35,18 +48,10 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    ],
-    test_suite='runtests.runtests',
-    tests_require=[
-        'pyjwkest>=1.3.0',
-        'cryptography>==2.0',
-        'pyjwt>==1.5.0',
-        'mock>=2.0.0',
-    ],
+    ),
 
-    install_requires=[
-        'django',
-        'cryptography>==2.0',
-        'pyjwt>==1.5.0',
-    ],
+    install_requires=install_requires,
+    test_suite='runtests.runtests',
+    tests_require=tests_require,
+
 )

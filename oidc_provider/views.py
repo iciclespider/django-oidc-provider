@@ -14,6 +14,7 @@ from django.contrib.auth.views import (
 
 from struct import pack
 
+import django
 try:
     from django.urls import reverse
 except ImportError:

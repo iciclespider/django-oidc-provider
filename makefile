@@ -67,9 +67,7 @@ lint:: $(python_venv_dependencies)
 .PHONY: test
 test:: $(python_venv_dependencies)
 	$(call START,Test python)
-	$(python_venv_build)/bin/python setup.py pytest \
-	  --index-url $(python_venv_local_url) \
-	  --addopts '--ds=tests.settings -rsxX --junitxml=$(build)/junit.xml --cov=oidc_provider --cov-report=html:$(build)/htmlcov'
+	$(python_venv_build)/bin/python setup.py test
 	$(call FINISH,Test python)
 
 ####################################################################
