@@ -38,11 +38,15 @@ setup(
     ],
     test_suite='runtests.runtests',
     tests_require=[
+        'pyjwkest>=1.3.0',
+        'cryptography>==2.0',
+        'pyjwt>==1.5.0',
         'mock>=2.0.0',
     ],
 
     install_requires=[
         'django',
-        'pyjwkest>=1.3.0',
+        'cryptography>==2.0',
+        'pyjwt>==1.5.0',
     ],
 )
